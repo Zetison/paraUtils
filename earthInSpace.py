@@ -3,7 +3,7 @@
 # To ensure correct image size when batch processing, please search 
 # for and uncomment the line `# renderView*.ViewSize = [*,*]`
 
-import os
+import getpass
 #### import the simple module from the paraview
 from paraview.simple import *
 #### disable automatic camera reset on 'Show'
@@ -14,7 +14,8 @@ paraview.simple._DisableFirstRenderCameraReset()
 #convert converted_lBM2-1.jpg converted_lBM2-0.jpg +append converted_lBM2.jpg
 #rm converted_lBM2-*
 
-dir = os.getcwd()
+username = getpass.getuser()
+dir = '/home/'+username+'/kode/paraUtils/'
 # create a new 'Sphere'
 sphere1 = Sphere()
 R = 6370e3
