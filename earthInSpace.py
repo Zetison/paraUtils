@@ -1,4 +1,4 @@
-import getpass
+from os.path import expanduser
 #### import the simple module from the paraview
 from paraview.simple import *
 #### disable automatic camera reset on 'Show'
@@ -8,9 +8,8 @@ paraview.simple._DisableFirstRenderCameraReset()
 #convert -crop 50%x100% lightBlueMarble2.jpg converted_lBM2.jpg
 #convert converted_lBM2-1.jpg converted_lBM2-0.jpg +append converted_lBM2.jpg
 #rm converted_lBM2-*
-
-username = getpass.getuser()
-dir = '/home/'+username+'/kode/paraUtils/'
+home = expanduser("~")
+paraUtilsDir = home+'/kode/paraUtils'
 Rpole = 6356e3
 Requator = 6378e3
 #textureMapPic = "transparentEarth.png"
@@ -19,7 +18,7 @@ textureMapPic = "converted_lBM2.jpg"
 # get active view
 renderView1 = GetActiveViewOrCreate('RenderView')
 renderView1.UseSkyboxBackground = 1
-renderView1.BackgroundTexture = CreateTexture(dir+"/sources/universe.png")
+renderView1.BackgroundTexture = CreateTexture(paraUtilsDir+"/sources/universe.png")
 renderView1.BackgroundNorth = [0.0, 0.0, 1.0]
 renderView1.BackgroundEast = [0.0, 1.0, 0.0]
 renderView1.OrientationAxesVisibility = 0 # Hide orientation axes
@@ -48,7 +47,7 @@ textureMaptoSphere1Display.Representation = 'Surface'
 textureMaptoSphere1Display.ColorArrayName = [None, '']
 textureMaptoSphere1Display.SeamlessU = 1
 textureMaptoSphere1Display.SeamlessV = 1
-textureMaptoSphere1Display.Texture = CreateTexture(dir+"/sources/"+textureMapPic)
+textureMaptoSphere1Display.Texture = CreateTexture(paraUtilsDir+"/sources/"+textureMapPic)
 
 # update the view to ensure updated data information
 renderView1.ResetCamera()
