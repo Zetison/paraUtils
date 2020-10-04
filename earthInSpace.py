@@ -30,17 +30,17 @@ sphere1.PhiResolution = 100
 sphere1.ThetaResolution = 100
 sphere1.EndTheta = 359.9999999999999
 
-calculator3 = Calculator(Input=sphere1)
-calculator3.Function = 'coordsX*iHat+coordsY*jHat+'+str(Rpole/Requator)+'*coordsZ*kHat'
-calculator3.ResultArrayName = 'Ellipsoid'
-calculator3.CoordinateResults = 1
-
 # create a new 'Texture Map to Sphere'
-textureMaptoSphere1 = TextureMaptoSphere(Input=calculator3)
+textureMaptoSphere1 = TextureMaptoSphere(Input=sphere1)
 textureMaptoSphere1.PreventSeam = 0
 
+ellipsoid = Calculator(Input=textureMaptoSphere1)
+ellipsoid.Function = 'coordsX*iHat+coordsY*jHat+'+str(Rpole/Requator)+'*coordsZ*kHat'
+ellipsoid.ResultArrayName = 'Ellipsoid'
+ellipsoid.CoordinateResults = 1
+
 # show data in view
-textureMaptoSphere1Display = Show(textureMaptoSphere1, renderView1, 'GeometryRepresentation')
+textureMaptoSphere1Display = Show(ellipsoid, renderView1, 'GeometryRepresentation')
 
 # trace defaults for the display properties.
 textureMaptoSphere1Display.Representation = 'Surface'
