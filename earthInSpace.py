@@ -19,8 +19,8 @@ textureMapPic = "converted_lBM2.jpg"
 renderView1 = GetActiveViewOrCreate('RenderView')
 renderView1.UseSkyboxBackground = 1
 renderView1.BackgroundTexture = CreateTexture(paraUtilsDir+"/sources/universe.png")
-renderView1.BackgroundNorth = [0.0, 0.0, 1.0]
-renderView1.BackgroundEast = [0.0, 1.0, 0.0]
+#renderView1.BackgroundNorth = [0.0, 0.0, 1.0]
+#renderView1.BackgroundEast = [0.0, 1.0, 0.0]
 renderView1.OrientationAxesVisibility = 0 # Hide orientation axes
 
 # create a new 'Sphere'
