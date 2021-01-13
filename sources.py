@@ -13,7 +13,7 @@ def addCoordData(grid,gridpoints):
 def cone(c1,h_max,phi,n=100,name='temp'):
 	c1 = np.array(c1)
 	phi = np.radians(phi)
-	r_max = h_max/np.cos(phi)
+	r_max = h_max/np.tan(phi)
 	hyp = h_max/np.sin(phi)
 	circ = 2*np.pi*r_max
 	nr = np.round(n*hyp/circ).astype('int')
@@ -109,5 +109,5 @@ def coffeeFilter(c1,c2,h_max,phi1,phi2,n=100,name='temp'):
 			
 if __name__ == "__main__":
   # execute only if run as a script
-	#cone([0,0,0],1,30,n=100,name='temp')
-	coffeeFilter([4,5,6],[2,3,5],h_max=10,phi1=30,phi2=50,n=100,name='temp')
+	cone([0,0,0],2000,3,n=100,name='temp')
+	#coffeeFilter([4,5,6],[2,3,5],h_max=10,phi1=30,phi2=50,n=100,name='temp')
