@@ -1,4 +1,4 @@
-from pyproj import Proj
+#from pyproj import Proj
 from os.path import expanduser
 from paraview.simple import *
 import numpy as np
@@ -9,12 +9,12 @@ def prsLatLonStr(dmsStr):
 def dms2dd(dms):
     return float(dms[0]) + float(dms[1])/60 + float(dms[2])/3600
 
-myProj = Proj("+proj=utm +zone=33K, +north +ellps=WGS84 +datum=WGS84 +units=m +no_defs")
-def latLonUTM(lat,lon,z):
-    declat = dms2dd(prsLatLonStr(lat))
-    declon = dms2dd(prsLatLonStr(lon))
-    lonUTM, latUTM = myProj(declon,declat)
-    return np.array([lonUTM,latUTM,z*0.3048])
+#myProj = Proj("+proj=utm +zone=33K, +north +ellps=WGS84 +datum=WGS84 +units=m +no_defs")
+#def latLonUTM(lat,lon,z):
+#    declat = dms2dd(prsLatLonStr(lat))
+#    declon = dms2dd(prsLatLonStr(lon))
+#    lonUTM, latUTM = myProj(declon,declat)
+#    return np.array([lonUTM,latUTM,z*0.3048])
 
 def annotateTimeStep(obj,renderview,location='UpperLeftCorner',SAVE_HIST=1,color=[0.0, 0.0, 0.0]):
     pythonAnnotation = PythonAnnotation(registrationName='Time annotation', Input=obj)
@@ -33,10 +33,9 @@ def insertSINTEFlogo(renderview,color='white',position=[0.84, 0.0]):
     logo1Display.Position = position
     logo1Display.Interactivity = 0
 
-def saveScreenShot(renderView,name,saveScreenShots=True,viewSize=[1920,1080],useTransparentBackground=False):
+def saveScreenShot(renderView,name,saveScreenShots=True,viewSize=[1920,1080],useTransparentBackground=False,saveAllViews=0,separatorWidth=0):
     if saveScreenShots:
-        renderView.ViewSize = viewSize
-        SaveScreenshot(name+'.png', renderView,
+        SaveScreenshot(name+'.png', renderView, SaveAllViews=saveAllViews,SeparatorWidth=separatorWidth,
                 FontScaling='Do not scale fonts', #'Scale fonts proportionally',
                 TransparentBackground=useTransparentBackground,
                 ImageResolution=viewSize,
