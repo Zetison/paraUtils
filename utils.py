@@ -34,9 +34,22 @@ def insertSINTEFlogo(renderview,color='white',position=[0.84, 0.0]):
     logo1Display.Position = position
     logo1Display.Interactivity = 0
 
+def writePVD(filename,filenames,timestamps):
+    f = open(filename+".pvd", "w")
+    f.write('<VTKFile type="Collection">\n')
+    f.write('  <Collection>\n')
+    for time,name in zip(timestamps,filenames):
+        f.write('    <DataSet timestep="%d" part="0" file="%s" />\n' % (time,name))
+    
+    f.write('  </Collection>\n')
+    f.write('</VTKFile>\n')
+    f.close()
+
 def saveScreenShot(renderView,name,saveScreenShots=True,viewSize=[1920,1080],useTransparentBackground=False,saveAllViews=0,separatorWidth=0):
     if saveScreenShots:
-        renderView.ViewSize = viewSize
+        if not saveAllViews:
+            renderView.ViewSize = viewSize
+
         SaveScreenshot(name+'.png', renderView, SaveAllViews=saveAllViews,SeparatorWidth=separatorWidth,
                 FontScaling='Do not scale fonts', #'Scale fonts proportionally',
                 TransparentBackground=useTransparentBackground,
@@ -45,7 +58,9 @@ def saveScreenShot(renderView,name,saveScreenShots=True,viewSize=[1920,1080],use
 
 def saveAnimation(renderViewOrLayout,name,noSteps,makeVideo=True,viewSize=[1920,1080],frameRate=15,animStart=0,saveAllViews=0,separatorWidth=0):
     if makeVideo:
-        renderView.ViewSize = viewSize
+        if not saveAllViews:
+            renderView.ViewSize = viewSize
+
         animationScene1 = GetAnimationScene()
         SaveAnimation(name+'.ogv', renderViewOrLayout,SaveAllViews=saveAllViews,SeparatorWidth=separatorWidth,
                 FontScaling='Do not scale fonts', #'Scale fonts proportionally',
