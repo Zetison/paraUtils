@@ -5,10 +5,15 @@ paraview.simple._DisableFirstRenderCameraReset()
 # create a new 'XML Structured Grid Reader'
 filename1 = '/home/zetison/results/simra/Sula/ideal/M0/hist-1.vts'
 filename2 = '/home/zetison/results/simra/Sula/ideal/init.vts'
-filename1 = '/home/zetison/results/simra/HuntHill_test_hx100_M0_DNS_uniRef/M0/hist-1.vts'
-filename2 = '/home/zetison/results/simra/HuntHill_test_hx100_M0_DNS_uniRef/init.vts'
-filename1 = '/home/zetison/results/simra/HuntHill_test_hx100_M0_DNS_uniRef/M0/boun-1.vts'
-filename2 = '/home/zetison/results/simra/HuntHill_test_hx100_M0_DNS_uniRef/boun-1.vts'
+filename1 = '/home/zetison/results/simra/Sula/met/M0/cont.vts'
+filename2 = '/home/zetison/results/simra/Sula/met/init.vts'
+#filename1 = '/home/zetison/results/simra/HuntHill_test_hx100_M0_DNS_uniRef/M0/hist-1.vts'
+#filename2 = '/home/zetison/results/simra/HuntHill_test_hx100_M0_DNS_uniRef/init.vts'
+#filename1 = '/home/zetison/results/simra/HuntHill_test_hx100_M0_DNS_uniRef/M0/boun-1.vts'
+#filename2 = '/home/zetison/results/simra/HuntHill_test_hx100_M0_DNS_uniRef/boun-1.vts'
+#filename1 = '/home/zetison/results/simra/HuntHill_test_hx100_M0_DNS_uniRef/M0/boun-1.vts'
+#filename2 = '/home/zetison/results/simra/HuntHill_test_hx100_M0_DNS_uniRef/M0/hist-1.vts'
+
 input1 = XMLStructuredGridReader(registrationName=filename1, FileName=[filename1])
 input2 = XMLStructuredGridReader(registrationName=filename2, FileName=[filename2])
 
