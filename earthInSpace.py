@@ -15,7 +15,7 @@ Requator = 6378e3
 #textureMapPic = "transparentEarth.png"
 textureMapPic = "converted_lBM2.jpg"
 
-import universeBackground
+#import universeBackground
 
 # create a new 'Sphere'
 sphere1 = Sphere()
